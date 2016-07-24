@@ -51,11 +51,12 @@ gem 'pry-rails'
 
 gem 'pry'
 
-gem 'twitter-bootstrap-rails'
-
-gem 'devise'
 
 gem 'rails_12factor', group: :production
 
 
 end
+
+gem 'twitter-bootstrap-rails'
+
+gem 'devise'
