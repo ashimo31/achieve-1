@@ -34,6 +34,7 @@ class BlogsController < ApplicationController
   def create
     @blog=Blog.create(blogs_params)
      @blog.user_id = current_user.id
+
     if @blog.save
     redirect_to blogs_path, notice: "ブログを作成しました！"
   else
@@ -73,7 +74,7 @@ class BlogsController < ApplicationController
   
   private
     def blogs_params
-      params.require(:blog).permit(:title, :content)
+      params.require(:blog).permit(:title, :content, :user_id)
     end
     
     def set_blog
