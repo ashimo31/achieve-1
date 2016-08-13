@@ -57,11 +57,11 @@ gem 'rails_12factor', group: :production
 
 gem 'twitter-bootstrap-rails'
 
-gem 'devise'
+
 
 gem 'faker'
-
+end
 group :development do
   gem 'letter_opener'
 end
-end
+gem 'devise'
