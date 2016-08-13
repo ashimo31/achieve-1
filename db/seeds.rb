@@ -14,6 +14,8 @@
                password: password,
                password_confirmation: password,
                )
+               
+
   title =  Faker::Lorem.word
   content = Faker::Lorem.sentence
   user_id = Faker:: Number.between(1,100)

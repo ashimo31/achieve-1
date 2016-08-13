@@ -55,10 +55,13 @@ gem 'pry'
 gem 'rails_12factor', group: :production
 
 
-end
-
 gem 'twitter-bootstrap-rails'
 
 gem 'devise'
 
 gem 'faker'
+
+group :development do
+  gem 'letter_opener'
+end
+end

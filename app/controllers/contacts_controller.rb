@@ -18,6 +18,7 @@ before_action :set_contact, only: [:edit, :update, :destroy]
     @contact=Contact.new(contacts_params)
     if @contact.save
       redirect_to root_path, notice: "お問い合わせを受け付けました！"
+          NoticeMailer.sendmail_contact(@contact).deliver
     else
       render action: 'new'
     end
