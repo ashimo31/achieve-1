@@ -3,6 +3,16 @@ source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.3'
+
+
+gem 'rails_12factor', group: :production
+
+
+gem 'twitter-bootstrap-rails'
+
+
+
+
 # Use postgresql as the database for Active Record
 gem 'pg'
 # Use SCSS for stylesheets
@@ -50,12 +60,6 @@ gem 'pry-rails'
 
 
 gem 'pry'
-
-
-gem 'rails_12factor', group: :production
-
-
-gem 'twitter-bootstrap-rails'
 
 
 
