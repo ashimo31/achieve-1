@@ -65,3 +65,7 @@ group :development do
   gem 'letter_opener'
 end
 gem 'devise'
+
+gem 'therubyracer', platforms: :ruby
+
+gem 'rails_admin'

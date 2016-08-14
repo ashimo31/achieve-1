@@ -4,18 +4,18 @@ class NoticeMailer < ApplicationMailer
   # with the following lookup:
   #
   #   en.notice_mailer.sendmail_contact.subject
-  #    
+  #
     def sendmail_blog(blog)
     @blog = blog
     @greeting = "Hi"
     mail to: "nobuom@gmaill.com",
     subject: '【Achieve】ブログが投稿されました'
   end
-  
+
    def sendmail_contact(contact)
     @contact = contact
     @greeting = "Hi"
-    mail to: "nobuom@gmail.com",
+    mail to: @contact.email,
     subject: '【Achieve】お問い合わせを受け付けました'
-  end  
+  end
 end
