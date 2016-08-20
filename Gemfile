@@ -57,7 +57,7 @@ group :development, :test do
   gem 'spring'
 
 gem 'pry-rails'
-
+gem 'better_errors'
 
 gem 'pry'
 
@@ -68,8 +68,7 @@ end
 group :development do
   gem 'letter_opener'
 
-  gem 'pry-rails'
-  gem 'better_errors'
+
 end
 
 gem 'devise'

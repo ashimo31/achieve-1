@@ -1,25 +1,4 @@
 class BlogsController < ApplicationController
-  before_action :authenticate_user!
-
-  def index
-    @blogs = Blog.all
-    binding.pry
-  end
-
-  def new
-  end
-
-  def confirm
-  end
-
-  def create
-  end
-
-end
-
-
-
-class BlogsController < ApplicationController
 
 
 
