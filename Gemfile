@@ -10,7 +10,9 @@ gem 'rails_12factor', group: :production
 
 gem 'twitter-bootstrap-rails'
 
-
+#image uploader
+gem 'carrierwave'
+gem 'rmagick'
 
 
 # Use postgresql as the database for Active Record
@@ -45,6 +47,9 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+gem 'omniauth'
+gem 'omniauth-twitter'
+gem 'omniauth-facebook'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -61,13 +66,14 @@ gem 'better_errors'
 
 gem 'pry'
 
-
-
 gem 'faker'
 end
+
+
 group :development do
   gem 'letter_opener'
 
+  gem 'dotenv-rails'
 
 end
 

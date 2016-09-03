@@ -52,13 +52,11 @@ class BlogsController < ApplicationController
     @blogs = Blog.all
   end
 
-
-  private
-    def blogs_params
-      params.require(:blog).permit(:title, :content, :user_id)
-    end
-
-    def set_blog
-      @blog = Blog.find(params[:id])
-    end
+  def new
+     if params[:back]
+       @blog = Blog.new(blogs_params)
+     else
+       @blog = Blog.new
+     end
   end
+end

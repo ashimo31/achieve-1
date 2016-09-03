@@ -1,7 +1,7 @@
 # Use this hook to configure devise mailer, warden hooks and so forth.
 # Many of these configuration options can be set straight in your model.
 Devise.setup do |config|
-config.secret_key = '6a472bd031cde980582aa2b677915dce56d172e40908a75d5a430bcabd0ed682a3ed6b3d2baf2e67237ecd078e15585964a60b8cfe1f3b95179cc9d60ddff95c' 
+config.secret_key = '6a472bd031cde980582aa2b677915dce56d172e40908a75d5a430bcabd0ed682a3ed6b3d2baf2e67237ecd078e15585964a60b8cfe1f3b95179cc9d60ddff95c'
   # The secret key used by Devise. Devise uses this key to generate
   # random tokens. Changing this key will render invalid all existing
   # confirmation, reset password and unlock tokens in the database.
@@ -272,4 +272,11 @@ config.secret_key = '6a472bd031cde980582aa2b677915dce56d172e40908a75d5a430bcabd0
   # When using OmniAuth, Devise cannot automatically set OmniAuth path,
   # so you need to do it manually. For the users scope, it would be:
   # config.omniauth_path_prefix = '/my_engine/users/auth'
+  if Rails.env.production?
+    config.omniauth :facebook, ENV["1103509603049694"], ENV["b73be06bb96ce02fa172c258008d7aaf"], scope: 'email', display: 'popup', info_fields: 'name, email'
+    config.omniauth :twitter, ENV["tL3RQ19OZsh34JXNrSdrs7eEz"], ENV["rlXD9kuyEVRxgoCtANAJb3SYDPoWd9kw4rltWOcE1jISz8phia"], scope: 'email', display: 'popup', info_fields: 'name, email'
+  else
+    config.omniauth :facebook, ENV["16243266411926"], ENV["bcc3ff4e0f18bf3619ba625a5c10acb5"], scope: 'email', display: 'popup', info_fields: 'name, email'
+    config.omniauth :twitter, ENV["zVi1Ju7inF3RGAp7jXozFxeHn"], ENV["5EBR6Y8OrvmGdnnE9ZyKTPX3KDTP0bhtbl12ATsps6RJtLXDq6"], scope: 'email', display: 'popup', info_fields: 'name, email'
+  end
 end
