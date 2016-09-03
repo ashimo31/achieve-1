@@ -272,11 +272,12 @@ config.secret_key = '6a472bd031cde980582aa2b677915dce56d172e40908a75d5a430bcabd0
   # When using OmniAuth, Devise cannot automatically set OmniAuth path,
   # so you need to do it manually. For the users scope, it would be:
   # config.omniauth_path_prefix = '/my_engine/users/auth'
+
   if Rails.env.production?
-    config.omniauth :facebook, ENV["1103509603049694"], ENV["b73be06bb96ce02fa172c258008d7aaf"], scope: 'email', display: 'popup', info_fields: 'name, email'
-    config.omniauth :twitter, ENV["tL3RQ19OZsh34JXNrSdrs7eEz"], ENV["rlXD9kuyEVRxgoCtANAJb3SYDPoWd9kw4rltWOcE1jISz8phia"], scope: 'email', display: 'popup', info_fields: 'name, email'
+    config.omniauth :facebook, ENV["FACEBOOK_ID_PRODUCTION"], ENV["FACEBOOK_SECRET_PRODUCTION"], scope: 'email', display: 'popup', info_fields: 'name, email'
+    config.omniauth :twitter, ENV["TWITTER_ID_PRODUCTION"], ENV["TWITTER_SECRET_PRODUCTION"], scope: 'email', display: 'popup', info_fields: 'name, email'
   else
-    config.omniauth :facebook, ENV["16243266411926"], ENV["bcc3ff4e0f18bf3619ba625a5c10acb5"], scope: 'email', display: 'popup', info_fields: 'name, email'
-    config.omniauth :twitter, ENV["zVi1Ju7inF3RGAp7jXozFxeHn"], ENV["5EBR6Y8OrvmGdnnE9ZyKTPX3KDTP0bhtbl12ATsps6RJtLXDq6"], scope: 'email', display: 'popup', info_fields: 'name, email'
+    config.omniauth :facebook, ENV["FACEBOOK_ID_DEVELOPMENT"], ENV["FACEBOOK_SECRET_DEVELOPMENT"], scope: 'email', display: 'popup', info_fields: 'name, email'
+    config.omniauth :twitter, ENV["TWITTER_ID_DEVELOPMENT"], ENV["TWITTER_SECRET_DEVELOPMENT"], scope: 'email', display: 'popup', info_fields: 'name, email'
   end
 end
