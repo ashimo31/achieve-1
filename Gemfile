@@ -79,6 +79,8 @@ gem 'rails_admin'
 
 gem 'cancan'
 
+gem 'faker'
+
 gem 'omniauth'
 gem 'omniauth-twitter'
 gem 'omniauth-facebook'
