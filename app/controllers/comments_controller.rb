@@ -22,10 +22,20 @@ class CommentsController < ApplicationController
     def destroy
      @blog = Blog.find(params[:blog_id])
      @comment = @blog.comments.find(params[:id])
-     @comment.destroy
-     redirect_to blog_path(@blog), notice: "コメントを削除しました！"
-    end
 
+     # クライアント要求に応じてフォーマットを変更
+       respond_to do |format|
+         if @comment.destroy
+           format.html { redirect_to blog_path(@blog) }
+           format.json { render :show, status: :created, location: @comment }
+           # JS形式でレスポンスを返します。
+           format.js { render :index }
+         else
+           format.html { render :new }
+           format.json { render json: @comment.errors, status: :unprocessable_entity }
+         end
+      end
+    end
 
 
 
