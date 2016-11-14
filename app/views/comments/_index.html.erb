@@ -6,7 +6,6 @@
         <p class="left"><%= comment.content %></p>
         <% if current_user.id == comment.user.id %>
           <p class="right">
-         
          <%= link_to '', blog_comment_path(blog, comment), class: "fa fa-trash-o fa-lg", method: :delete, data: { confirm: '本当に削除していいですか？' } %>
           </p>
         <% end %>

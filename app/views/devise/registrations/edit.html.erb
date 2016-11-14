@@ -1,4 +1,4 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<h2>マイページ</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= f.error_messages! %>
@@ -10,18 +10,25 @@
 
   <div class="field">
     <%= f.label :名前 %><br />
-    <%= f.text_field :name, class: "form-control" %>
+    <%= f.text_field :name %>
   </div>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
   <% end %>
 
-  <div class="field"abel :パスワード %> <i>(leave blank if you don't want to change it)</i><br />
+  <div class="field">
+    <%= f.label :現在のパスワード %> <i>(必須)</i><br />
+    <%= f.password_field :current_password, autocomplete: "off" %>
+  </div>
+
+
+  <div class="field"＞
+      <%= f.label :新しいパスワード %> <i>(パスワードを変更しない場合は入力不要です)</i><br />
     <%= f.password_field :password, autocomplete: "off" %>
     <% if @minimum_password_length %>
       <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
+      <em>最低<%= @minimum_password_length %> 文字</em>
     <% end %>
   </div>
 
@@ -31,18 +38,13 @@
   </div>
 
   <div class="field">
-    <%= f.label :現在のパスワード %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "off" , class: "form-control"%>
-  </div>
-
-  <div class="field">
     <%= profile_img(@user) if profile_img(@user) %>
     <%= f.file_field :avatar %>
     <%= f.hidden_field :avatar_cache %>
   </div>
 
-  <div class="actions">
-    <%= f.submit "更新", class: "btn btn-primary btn-block" %>
+  <div class="field">
+    <%= f.submit "更新"%>
   </div>
 <% end %>
 
@@ -67,11 +69,14 @@
     <%= f.password_field :current_password, autocomplete: "off", class: "form-control" %>
   </div>
 
+
+  <br /><br /><br /><br /><br /><br />
+
 <% end %>
 
 
-<h3>Cancel my account</h3>
+<h2>アカウントの削除</h2>
 
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+<p> <%= button_to "削除", registration_path(resource_name), data: { confirm: "本当に削除しますか?" }, method: :delete %></p>
 
-<%= link_to "Back", :back %>
+<%= link_to "トップページに戻る", :back %>

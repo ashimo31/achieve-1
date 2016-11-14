@@ -1,4 +1,7 @@
 class CommentsController < ApplicationController
+  before_action :authenticate_user!
+  respond_to :js
+
   # コメントを保存、投稿するためのアクションです。
   def create
     # ログインユーザーに紐付けてインスタンス生成するためbuildメソッドを使用します。

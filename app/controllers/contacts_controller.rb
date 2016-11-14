@@ -1,11 +1,11 @@
 class ContactsController < ApplicationController
- 
+
 before_action :set_contact, only: [:edit, :update, :destroy]
-  
+
   def index
     @contacts = Contact.all
   end
-  
+
   def new
     if params[:back]
       @contact = Contact.new(contacts_params)
@@ -13,21 +13,21 @@ before_action :set_contact, only: [:edit, :update, :destroy]
       @contact= Contact.new
     end
   end
-  
+
   def create
     @contact=Contact.new(contacts_params)
     if @contact.save
+      NoticeMailer.sendmail_contact(@contact).deliver
       redirect_to root_path, notice: "お問い合わせを受け付けました！"
-          NoticeMailer.sendmail_contact(@contact).deliver
     else
       render action: 'new'
     end
   end
-  
+
   def edit
     @contact = Contact.find(params[:id])
   end
-      
+
   def update
     @contact = Contact.find(params[:id])
     if @contact.update(contacts_params)
@@ -36,14 +36,14 @@ before_action :set_contact, only: [:edit, :update, :destroy]
       render action: 'edit'
     end
   end
-  
-  
+
+
   def confirm
     @contact = Contact.new(contacts_params)
     render :new if @contact.invalid?
   end
-  
-  
+
+
   def destroy
     @contact=Contact.find(params[:id])
     if @contact.destroy
@@ -52,13 +52,13 @@ before_action :set_contact, only: [:edit, :update, :destroy]
       render action: 'new'
     end
   end
-  
-  private 
+
+  private
     def contacts_params
       params.require(:contact).permit(:name, :email, :content)
     end
-    
+
     def set_contact
     @contact = Contact.find(params[:id])
-    end 
+    end
 end
