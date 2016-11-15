@@ -4,8 +4,11 @@
 
   # GET /tasks
   # GET /tasks.json
+
   def index
-    @tasks = Task.where(charge_id: current_user.id)
+    @tasks = Task.where(user_id: params[:user_id]).where.not(done: true)
+                 .order(updated_at: :desc)
+    @user = User.find(params[:user_id])
   end
 
 
@@ -16,8 +19,10 @@
 
   # GET /tasks/new
   def new
-    @task = Task.new
-  end
+      @task = Task.new(user_id: params[:user_id], charge_id: params[:user_id])
+    end
+
+
 
   # GET /tasks/1/edit
   def edit

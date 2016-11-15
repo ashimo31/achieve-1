@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
 
+  resources :users, only: [:index, :show, :edit, :update] do
+    resources :tasks
+  end
 
-  resources :users, only: [:index]
+
   resources :followed_users, only: [:index]
   resources :followers, only: [:index]
 
