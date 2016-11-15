@@ -1,5 +1,5 @@
 class FollowedUsersController < ApplicationController
   def index
-        @followed_users = Followed_user.all
+        @followed_users = current_user.followed_users.all
   end
 end
