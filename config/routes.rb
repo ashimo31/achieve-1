@@ -9,8 +9,9 @@ Rails.application.routes.draw do
 
 
   resources :users, only: [:index, :show, :edit, :update] do
-  resources :tasks
   end
+
+  resources :tasks
 
 
   resources :followed_users, only: [:index]

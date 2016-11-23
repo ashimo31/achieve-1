@@ -40,5 +40,5 @@
   <%= @task.status %>
 </p>
 
-<%= link_to 'タスクの編集', edit_user_task_path(@task.user, @task) %> |
-<%= link_to '戻る', user_tasks_path(@task.user) %>
+<%= link_to 'タスクの編集', edit_task_path(@task) %> |
+<%= link_to '戻る', tasks_path(@task.user) %>

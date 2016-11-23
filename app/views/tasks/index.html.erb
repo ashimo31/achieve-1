@@ -32,7 +32,7 @@
         <td><%= task.deadline.strftime("%Y年%m月%d日 %H時%M分") %></td>
         <td><%= task.charge.name %></td>
         <td><%= task.status %></td>
-        <td>  <%= link_to 'タスクの詳細へ', user_task_path(task.user, task) %> </td>
+        <td>  <%= link_to 'タスクの詳細へ', task_path(task.id) %> </td>
       </tr>
     <% end %>
   </tbody>
@@ -40,4 +40,4 @@
 
 <br>
 
-<%= link_to 'タスクの登録', new_user_task_path(@user) %>
+<%= link_to 'タスクの登録', new_task_path %>

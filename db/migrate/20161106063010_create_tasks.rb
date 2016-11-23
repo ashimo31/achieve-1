@@ -7,7 +7,6 @@ class CreateTasks < ActiveRecord::Migration
         t.text :content
         t.datetime :deadline
         t.integer :charge_id, null: false
-        t.boolean :done, default: false
         t.integer :status, default: 0
         t.references :user, index: true, foreign_key: true, null: false
 

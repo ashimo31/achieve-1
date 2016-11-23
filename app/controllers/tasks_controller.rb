@@ -4,9 +4,7 @@
 
 
   def index
-    @tasks = Task.where(user_id: params[:user_id]).where.not(done: true)
-                 .order(updated_at: :desc)
-    @user = User.find(params[:user_id])
+    @tasks = Task.where(charge_id: current_user.id)
   end
 
 
@@ -36,7 +34,7 @@
 
       respond_to do |format|
         if @task.save
-          format.html { redirect_to user_tasks_url, notice: 'タスクを登録しました。' }
+          format.html { redirect_to tasks_url, notice: 'タスクを登録しました。' }
           format.json { render :show, status: :created, location: @task }
         else
           format.html { render :new }
@@ -50,7 +48,7 @@
   def update
     respond_to do |format|
       if @task.update(task_params)
-        format.html { redirect_to user_task_path, notice: 'タスクを更新しました' }
+        format.html { redirect_to task_path, notice: 'タスクを更新しました' }
         format.json { render :show, status: :ok, location: @task }
       else
         format.html { render :edit }
@@ -82,7 +80,7 @@
 
     def correct_user
       @user = User.find(params[:user_id])
-      redirect_to(user_tasks_path(current_user)) unless current_user == @user
+      redirect_to tasks_path unless current_user == @user
     end
 
 end
