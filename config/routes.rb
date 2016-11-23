@@ -1,7 +1,15 @@
 Rails.application.routes.draw do
 
+
+  devise_for :users, controllers: {
+    registrations: "users/registrations",
+    omniauth_callbacks: "users/omniauth_callbacks"
+  }
+
+
+
   resources :users, only: [:index, :show, :edit, :update] do
-    resources :tasks
+  resources :tasks
   end
 
 
@@ -26,10 +34,6 @@ Rails.application.routes.draw do
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
-  devise_for :users, controllers: {
-    registrations: "users/registrations",
-    omniauth_callbacks: "users/omniauth_callbacks"
-  }
 
   root 'top#index'
 

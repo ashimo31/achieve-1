@@ -2,8 +2,6 @@
   before_action :authenticate_user!
   before_action :set_task, only: [:show, :edit, :update, :destroy]
 
-  # GET /tasks
-  # GET /tasks.json
 
   def index
     @tasks = Task.where(user_id: params[:user_id]).where.not(done: true)
@@ -31,23 +29,19 @@
   # POST /tasks
   # POST /tasks.json
 
-
   def create
+      @task = Task.new(task_params)
 
-    @task = current_user.tasks.build(task_params)
-    @task.charge_id = current_user.id
-
-    respond_to do |format|
-      if @task.save
-        format.html { redirect_to @task, notice: 'Task was successfully created.' }
-        format.json { render :show, status: :created, location: @task }
-      else
-        format.html { render :new }
-        format.json { render json: @task.errors, status: :unprocessable_entity }
+      respond_to do |format|
+        if @task.save
+          format.html { redirect_to user_tasks_url, notice: 'タスクを登録しました。' }
+          format.json { render :show, status: :created, location: @task }
+        else
+          format.html { render :new }
+          format.json { render json: @task.errors, status: :unprocessable_entity }
+        end
       end
     end
-  end
-
 
   # PATCH/PUT /tasks/1
   # PATCH/PUT /tasks/1.json
@@ -83,4 +77,10 @@
     def task_params
       params.require(:task).permit(:user_id, :title, :content, :deadline, :charge_id, :status)
     end
+
+    def correct_user
+      @user = User.find(params[:user_id])
+      redirect_to(user_tasks_path(current_user)) unless current_user == @user
+    end
+
 end

@@ -1,5 +1,7 @@
 <div id="follow_form_<%= user.id %>">
-  <li><%= link_to 'マイページ', user_registration_path %></li>
+  <li><%= link_to 'フォロー一覧', followed_users_path if user_signed_in? %></li>
+  <li><%= link_to 'フォロワー一覧', followers_path if user_signed_in? %></li>
+  
   <% unless current_user.following?(user) %>
     <%= form_for(current_user.relationships.build(followed_id: user.id), remote: true) do |f| %>
       <%= f.hidden_field :followed_id %>

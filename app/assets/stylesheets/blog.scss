@@ -1,7 +1,8 @@
 .wrapper {
   margin: 0px auto;
-  padding: 20px 20px 20px 35px;
-  .row {
+  padding: 20px 20px 20px 20px;
+
+.row {
     border-bottom: 1px solid #ccc;
     padding: 20px;
     text-align: left;
@@ -15,7 +16,7 @@ input[type="submit"].btn-block{
   display: none;
   border-radius: 50px;
   background: #336699;
-  width: 60px;
+  width: 100px;
   height: 60px;
   transition: all 0.3s;
   position: fixed;
