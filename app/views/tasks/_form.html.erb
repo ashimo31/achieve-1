@@ -29,16 +29,13 @@
     <%= f.datetime_select :deadline %>
   </div>
 
-  <%= f.select :status, [["未着手", "0"], ["対応中", "1"]] %>
-
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-
   <div class="field">
   <%= f.label :status %><br>
   <%= f.select :status, Task.statuses.keys %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
   </div>
 
 <% end %>

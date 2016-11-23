@@ -30,7 +30,9 @@
   # POST /tasks.json
 
   def create
-      @task = Task.new(task_params)
+      @task = current_user.tasks.build(task_params)
+      @task.charge_id = current_user.id
+
 
       respond_to do |format|
         if @task.save
