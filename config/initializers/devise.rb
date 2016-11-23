@@ -1,5 +1,6 @@
 
 Devise.setup do |config|
+  config.secret_key = '26bb7e7ae31e1ec6b889ee1411f8930c4c9fd3e2e20025187d9d2089faad5405a228ac4a0acfbb90f39e1728178ae415b867994f76bd30cc6ff656f71432779e'
 
   config.mailer_sender = 'noreply@yourdomain'
 

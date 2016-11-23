@@ -50,7 +50,7 @@
   def update
     respond_to do |format|
       if @task.update(task_params)
-        format.html { redirect_to @task, notice: 'Task was successfully updated.' }
+        format.html { redirect_to user_task_path, notice: 'タスクを更新しました' }
         format.json { render :show, status: :ok, location: @task }
       else
         format.html { render :edit }
