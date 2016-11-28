@@ -1,16 +1,12 @@
 source 'https://rubygems.org'
 
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.3'
 
-
 gem 'rails_12factor', group: :production
-
 
 gem 'twitter-bootstrap-rails'
 
-#image uploader
 gem 'carrierwave'
 gem 'rmagick'
 
@@ -84,3 +80,5 @@ gem 'faker'
 gem 'omniauth'
 gem 'omniauth-twitter'
 gem 'omniauth-facebook'
+
+gem 'pusher'

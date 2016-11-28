@@ -62,10 +62,11 @@
   def destroy
     @task.destroy
     respond_to do |format|
-      format.html { redirect_to tasks_url, notice: 'Task was successfully destroyed.' }
+      format.html { redirect_to tasks_url, notice: 'タスクを削除しました' }
       format.json { head :no_content }
     end
   end
+end
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -82,5 +83,3 @@
       @user = User.find(params[:user_id])
       redirect_to tasks_path unless current_user == @user
     end
-
-end

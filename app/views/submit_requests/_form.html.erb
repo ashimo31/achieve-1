@@ -1,0 +1,35 @@
+<%= form_for(@submit_request) do |f| %>
+  <% if @submit_request.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@submit_request.errors.count, "error") %> により依頼できません</h2>
+
+      <ul>
+      <% @submit_request.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<% f.hidden_field :user_id %>
+
+ <div class="field">
+   <%= f.label :task_id %><br>
+   <%= f.collection_select :task_id, Task.where(charge_id: current_user.id), :id, :title %>
+ </div>
+ <div class="field">
+   <%= f.label :メッセージ %><br>
+   <%= f.text_area :message %>
+ </div>
+ <div class="field">
+   <%= f.label :request_user_id %><br>
+   <%= f.collection_select :request_user_id, User.where.not(id: current_user.id), :id, :name %>
+ </div>
+ <div class="field">
+   <%= f.label :status %><br>
+   <%= f.select :status, SubmitRequest.statuses.key %>
+ </div>
+ <div class="actions">
+   <%= f.submit %>
+ </div>
+<% end %>
