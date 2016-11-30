@@ -72,8 +72,6 @@ class SubmitRequestsController < ApplicationController
      end
     end
 
-end
-
 private
   def set_submit_request
     @submit_request = SubmitRequest.find(params[:id])
@@ -82,3 +80,5 @@ private
   def submit_request_params
   params.require(:submit_request).permit(:user_id, :task_id, :title,:message, :content, :deadline, :charge_id, :status, :request_user_id)
   end
+
+end
