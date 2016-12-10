@@ -49,6 +49,12 @@ group :development, :test do
   gem 'letter_opener'
 
   gem 'dotenv-rails'
+
+  gem 'capistrano', '3.6.0'
+  gem 'capistrano-bundler'
+  gem 'capistrano-rails'
+  gem 'capistrano-rbenv'
+  gem 'capistrano3-unicorn'
   end
 
 gem 'devise'
@@ -68,3 +74,5 @@ gem 'omniauth-facebook'
 gem 'pusher'
 
 gem 'fog'
+
+gem 'unicorn'
