@@ -66,3 +66,5 @@ gem 'omniauth-twitter'
 gem 'omniauth-facebook'
 
 gem 'pusher'
+
+gem 'fog'

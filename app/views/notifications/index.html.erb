@@ -3,12 +3,13 @@
   <% @notifications.each do |notification| %>
   <hr>
     <li>
-      <span><%= notification.read %></span>
+      <span><%= read_status(notification.read)%></span>
       <p>
         <%= notification.comment.user.try(:name) %>さんが
         あなたのブログ（<%= link_to "#{notification.comment.blog.title}", blog_path(notification.comment.blog, notification_id: notification.id) %>）にコメントしました。
       </p>
-      <p><%= notification.created_at %></p>
+      <%= posted_time(notification.created_at) %>
     </li>
   <% end %>
 </ul>
+  

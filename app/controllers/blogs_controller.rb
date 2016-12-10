@@ -3,22 +3,27 @@ class BlogsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_blog, only: [:show, :edit, :update, :destroy]
 
- def new
+  def index
+    @blogs = Blog.all
+  end
+
+  def new
     if params[:back]
       @blog = Blog.new(blogs_params)
     else
       @blog = Blog.new
     end
- end
+  end
 
   def create
     @blog=Blog.create(blogs_params)
-     @blog.user_id = current_user.id
+    @blog.user_id = current_user.id
+
     if @blog.save
-     redirect_to blogs_path, notice: "ブログを作成しました！"
-     NoticeMailer.sendmail_blog(@blog).deliver
-  else
-    render action: 'new'
+      redirect_to blogs_path, notice: "ブログを作成しました！"
+      NoticeMailer.sendmail_blog(@blog).deliver
+    else
+      render action: 'new'
     end
   end
 
@@ -27,18 +32,18 @@ class BlogsController < ApplicationController
   end
 
   def update
-     @blog = Blog.find(params[:id])
+    @blog = Blog.find(params[:id])
     if @blog.update(blogs_params)
-       redirect_to blogs_path, notice: "ブログを更新しました！"
+      redirect_to blogs_path, notice: "ブログを更新しました！"
     else
-       render action: 'edit'
+      render action: 'edit'
     end
   end
 
   def destroy
-   @blog=Blog.find(params[:id])
-   @blog.destroy
-   redirect_to blogs_path, notice: "ブログを削除しました！"
+    @blog=Blog.find(params[:id])
+    @blog.destroy
+    redirect_to blogs_path, notice: "ブログを削除しました！"
   end
 
   def confirm
@@ -46,23 +51,11 @@ class BlogsController < ApplicationController
     render :new if @blog.invalid?
   end
 
-
-  def index
-    @blogs = Blog.all
-  end
-
-  def new
-     if params[:back]
-       @blog = Blog.new(blogs_params)
-     else
-       @blog = Blog.new
-     end
-  end
-
   def show
-      @comment = @blog.comments.build
-      @comments = @blog.comments
-      Notification.find(params[:notification_id]).update(read: true) if params[:notification_id]
+    @comment = @blog.comments.build
+    @comments = @blog.comments
+    Notification.find(params[:notification_id]).update(read: true) if params[:notification_id]
+
   end
 
 end
