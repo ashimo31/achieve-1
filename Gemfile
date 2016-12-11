@@ -48,7 +48,7 @@ group :development, :test do
 
   gem 'letter_opener'
 
-  gem 'dotenv-rails'
+
 
   gem 'capistrano', '3.6.0'
   gem 'capistrano-bundler'
@@ -58,6 +58,8 @@ group :development, :test do
   end
 
 gem 'devise'
+
+gem 'dotenv-rails'
 
 gem 'therubyracer', platforms: :ruby
 
