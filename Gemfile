@@ -59,8 +59,6 @@ group :development, :test do
 
 gem 'devise'
 
-gem '.gitignore'
-
 gem 'dotenv-rails'
 
 gem 'therubyracer', platforms: :ruby
