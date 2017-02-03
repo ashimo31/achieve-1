@@ -78,3 +78,5 @@ gem 'pusher'
 gem 'fog'
 
 gem 'unicorn'
+
+gem 'rails_12factor', group: :production

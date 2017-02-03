@@ -30,7 +30,7 @@
         <td><%= task.title %></td>
         <td><%= task.content %></td>
         <td><%= task.deadline.strftime("%Y年%m月%d日 %H時%M分") %></td>
-        <td><%= task.charge.name %></td>
+        <td><%= task.charge_id %></td>
         <td><%= task.status %></td>
         <td> <%= link_to 'タスクの詳細へ', task_path(task.id) %> </td>
         <td><%= link_to '削除', task_path(task.id), method: :delete, data: { confirm: '本当に削除しますか?' } %></td>
