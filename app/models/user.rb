@@ -39,8 +39,6 @@ class User < ActiveRecord::Base
       end
 
 
-
-
     def self.find_for_twitter_oauth(auth, signed_in_resource = nil)
     user = User.where(provider: auth.provider, uid: auth.uid).first
 
